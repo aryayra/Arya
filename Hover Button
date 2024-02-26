@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hover Gradient Button</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <button class="hover-button">Hover Button</button>
+</body>
+
+</html>
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background: #000000;
+  }
+  
+  .hover-button {
+    padding: 20px 40px;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #000000;
+    background-color: #ffffff;
+    background-size: 400%;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  @keyframes glow {
+    from {
+      background-position: 0%;
+    }
+    to {
+      background-position: 400%;
+    }
+  }
+  
+  .hover-button:before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: inherit;
+    filter: blur(36px);
+    z-index: -1;
+    opacity: 0;
+    transition: 0.4s ease-out;
+  }
+  
+  .hover-button:hover:before {
+    z-index: 1;
+    border-color: transparent;
+    background: linear-gradient(
+      45deg,
+      #f9d923,
+      #00a19d,
+      #0c87b7,
+      #cb49ff,
+      #f9d923
+    );
+    opacity: 1;
+    background-size: 400%;
+    animation: glow 5s linear forwards;
+  }
+
+  
